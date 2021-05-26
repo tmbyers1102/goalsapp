@@ -27,7 +27,44 @@ class GoalItemAdmin(admin.ModelAdmin):
         'date_of_goal'
     ]
 
-admin.site.register(CurrentGoalWeek)
+
+class CurrentGoalWeekAdmin(admin.ModelAdmin):
+    list_display = [
+        'week_start_date',
+        'gd1_run',
+        'gd1_water',
+        'gd1_smoothie',
+        'gd1_read',
+        'day1_is_complete',
+        'gd1_extra_point',
+        'gd2_run',
+        'gd2_water',
+        'gd2_smoothie',
+        'gd2_read',
+        'day2_is_complete',
+        'gd1_extra_point',
+        'gd3_run',
+        'gd3_water',
+        'gd3_smoothie',
+        'gd3_read',
+        'day3_is_complete',
+        'gd1_extra_point',
+        'gd4_run',
+        'gd4_water',
+        'gd4_smoothie',
+        'gd4_read',
+        'day4_is_complete',
+        'gd1_extra_point',
+        'gd5_run',
+        'gd5_water',
+        'gd5_smoothie',
+        'gd5_read',
+        'day5_is_complete',
+        'gd5_extra_point',
+        'week_extra_2points',
+    ]
+
+admin.site.register(CurrentGoalWeek, CurrentGoalWeekAdmin)
 admin.site.register(CurrentGoalDay, CurrentGoalDayAdmin)
 admin.site.register(GoalItem, GoalItemAdmin)
 

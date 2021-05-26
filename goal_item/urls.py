@@ -1,12 +1,11 @@
 from django.conf import settings
 from django.urls import include, path
 from . import views
-from .views import item_detail, item_list, this_week, home
+from .views import home, CurrentGoalWeekDetailView
 
-app_name = "items"
+app_name = "weeks"
 
 urlpatterns = [
     path('', home, name='home'),
-    path('<pk>/', item_detail, name='item-detail'),
-    path('thisweek/<pk>/', this_week, name='this-week'),
+    path('weeks/<int:pk>/', CurrentGoalWeekDetailView.as_view(), name='week-deatil'),
 ]

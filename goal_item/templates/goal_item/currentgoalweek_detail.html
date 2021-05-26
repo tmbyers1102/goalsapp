@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
+
+<a href="{% url 'weeks:home' %}">Back to home</a>
+<hr />
+
+    <h1>Week: {{ week }}</h1>
+    <h3>possible points: </h3>
+
+<table>
+    <!-- headers -->
+    <tr>
+      <th>Goal</th>
+      <th>Day #1</th>
+      <th>Day #2</th>
+      <th>Day #3</th>
+      <th>Day #4</th>
+      <th>Day #5</th>
+    </tr>
+    <tr>
+        <td>Run</td>
+        <td>{{ gd1_run_value }}</td>
+        <td>{{ gd2_run_value }}</td>
+        <td>{{ gd3_run_value }}</td>
+        <td>{{ gd4_run_value }}</td>
+        <td>{{ gd5_run_value }}</td>
+
+    </tr>
+    <tr>
+        <td>Water</td>
+        <td>{{ gd1_water_value }}</td>
+        <td>{{ gd2_water_value }}</td>
+        <td>{{ gd3_water_value }}</td>
+        <td>{{ gd4_water_value }}</td>
+        <td>{{ gd5_water_value }}</td>
+
+    </tr>
+    <tr>
+        <td>Smoothie</td>
+        <td>{{ gd1_smoothie_value }}</td>
+        <td>{{ gd2_smoothie_value }}</td>
+        <td>{{ gd3_smoothie_value }}</td>
+        <td>{{ gd4_smoothie_value }}</td>
+        <td>{{ gd5_smoothie_value }}</td>
+
+    </tr>
+    <tr>
+        <td>Read</td>
+        <td>{{ gd1_read_value }}</td>
+        <td>{{ gd2_read_value }}</td>
+        <td>{{ gd3_read_value }}</td>
+        <td>{{ gd4_read_value }}</td>
+        <td>{{ gd5_read_value }}</td>
+
+    </tr>
+    <tr>
+        <td>Extra Point Achieved?</td>
+        <td>{{ gd1_extra_point_value }}</td>
+        <td>{{ gd2_extra_point_value }}</td>
+        <td>{{ gd3_extra_point_value }}</td>
+        <td>{{ gd4_extra_point_value }}</td>
+        <td>{{ gd5_extra_point_value }}</td>
+
+    </tr>
+  </table>
+
+  <h2>Day 1 list total: {{ day_1_list_total }}</h2>
+  <h2>Day 2 list total: {{ day_2_list_total }}</h2>
+  <h2>Day 3 list total: {{ day_3_list_total }}</h2>
+  <h2>Day 4 list total: {{ day_4_list_total }}</h2>
+
+{% endblock content %}

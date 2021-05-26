@@ -21,7 +21,7 @@
 
 
 
-    <h1>This weeks progress</h1>
+    <h1>Week: {{ this_week }}</h1>
     <h3>possible points: {{ weeks_possible_points }}</h3>
     <h1>This weeks Goals</h1>
 
@@ -50,5 +50,9 @@
         </tr>
     {% endfor %}
   </table>
+
+
+  <h3>Day 1</h3>
+  <p>day 1: {{ this_week_d1 }}</p>
 
 {% endblock content %}

@@ -30,14 +30,41 @@ class Agent(models.Model):
 class CurrentGoalWeek(models.Model):
     week_start_date = models.DateField(auto_now_add=False)
     week_end_date = models.DateField(auto_now_add=False)
+    gd1_run = models.BooleanField(default=False)
+    gd1_water = models.BooleanField(default=False)
+    gd1_smoothie = models.BooleanField(default=False)
+    gd1_read = models.BooleanField(default=False)
+    day1_is_complete = models.BooleanField(default=False)
+    gd1_extra_point = models.BooleanField(default=False)
+    gd2_run = models.BooleanField(default=False)
+    gd2_water = models.BooleanField(default=False)
+    gd2_smoothie = models.BooleanField(default=False)
+    gd2_read = models.BooleanField(default=False)
+    day2_is_complete = models.BooleanField(default=False)
+    gd1_extra_point = models.BooleanField(default=False)
+    gd3_run = models.BooleanField(default=False)
+    gd3_water = models.BooleanField(default=False)
+    gd3_smoothie = models.BooleanField(default=False)
+    gd3_read = models.BooleanField(default=False)
+    day3_is_complete = models.BooleanField(default=False)
+    gd1_extra_point = models.BooleanField(default=False)
+    gd4_run = models.BooleanField(default=False)
+    gd4_water = models.BooleanField(default=False)
+    gd4_smoothie = models.BooleanField(default=False)
+    gd4_read = models.BooleanField(default=False)
+    day4_is_complete = models.BooleanField(default=False)
+    gd1_extra_point = models.BooleanField(default=False)
+    gd5_run = models.BooleanField(default=False)
+    gd5_water = models.BooleanField(default=False)
+    gd5_smoothie = models.BooleanField(default=False)
+    gd5_read = models.BooleanField(default=False)
+    day5_is_complete = models.BooleanField(default=False)
+    gd5_extra_point = models.BooleanField(default=False)
+    week_extra_2points = models.BooleanField(default=False)
     choose_goals = models.ManyToManyField(GoalItem, blank=True, related_name=('choose_goals'))
 
     def __str__(self):
         return f'{self.week_start_date} --> {self.week_end_date}'
-
-
-# class GoalList(models.Model):
-#     associated_week = models.models.OneToOneField(CurrentGoalWeek, on_delete=models.CASCADE, related_name="goal_week")
 
     
 class CurrentGoalDay(models.Model):
@@ -46,13 +73,6 @@ class CurrentGoalDay(models.Model):
 
     def __str__(self):
         return f'{self.goal_week} (day {self.week_day})'
-
-
-# create GoalInstance that chooses from types of GoalItem and takes a unique name by attaching it to a CurrentGoalWeek
-# class GoalInstance(models.Model):
-#     assigned_week = models.ForeignKey(CurrentGoalWeek, on_delete=models.DO_NOTHING)
-#     goal_item_type = models.ForeignKey(GoalItem, on_delete=models.DO_NOTHING)
-
 
 
 class DayOne(models.Model):
