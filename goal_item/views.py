@@ -6,6 +6,11 @@ from django.urls import reverse
 from .forms import GoalItemModelForm
 
 
+def home(request):
+
+    return render(request, 'goal_item/home.html')
+
+
 def item_list(request):
     items = GoalItem.objects.all()
     toms_items = GoalItem.objects.filter(agent=1)

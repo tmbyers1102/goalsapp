@@ -64,23 +64,23 @@ class DayOne(models.Model):
         return f'{self.goal_week} (Day #1)'
 
 
-@receiver(post_save, sender=CurrentGoalWeek)
-def create_days(sender, instance, created, **kwargs):
-    if created:
-        DayOne.objects.create(
-            goal_week = instance,
-        )
-        print(instance)
-        print('?&?&?&?&?&   created new DayOne  ?&?&?&?&?&?&?&&?')
+# @receiver(post_save, sender=CurrentGoalWeek)
+# def create_days(sender, instance, created, **kwargs):
+#     if created:
+#         DayOne.objects.create(
+#             goal_week = instance,
+#         )
+#         print(instance)
+#         print('?&?&?&?&?&   created new DayOne  ?&?&?&?&?&?&?&&?')
 
 
-@receiver(m2m_changed, sender=CurrentGoalWeek.choose_goals.through)
-def add_the_goals(sender, instance, action, **kwargs):
-    if action:
-        # goal_list = instance.objects.get()
-        # DayOne.objects.update(instance)
-        print('<<<<<<<<<<<<<<<   m2m_changed reciever went through >>>>>>>>>>>>>>>>>>')
-        print(instance)
+# @receiver(m2m_changed, sender=CurrentGoalWeek.choose_goals.through)
+# def add_the_goals(sender, instance, action, **kwargs):
+#     if action:
+#         # goal_list = instance.objects.get()
+#         # DayOne.objects.update(instance)
+#         print('<<<<<<<<<<<<<<<   m2m_changed reciever went through >>>>>>>>>>>>>>>>>>')
+#         print(instance)
 
 
 

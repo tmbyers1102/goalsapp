@@ -10,10 +10,6 @@ def create_goal_days(sender, instance, created, **kwargs):
     if created:
         GoalDayOne.objects.create(goal_week=instance)
         print('@--`--/-- created day #1')
-        # print(CurrentGoalWeek.choose_goals)
-        # the_week = [CurrentGoalWeek.choose_goals.through(pk = instance.id)]
-        # for x in the_week:
-        #     print(str(x))
         GoalDayTwo.objects.create(goal_week=instance)
         print('@--`--/-- created day #2')
         GoalDayThree.objects.create(goal_week=instance)
