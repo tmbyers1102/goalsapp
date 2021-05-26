@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="{% url 'goal-create' %}">Create a new goal</a>
+    <hr />
+    <h1>This is all of our goals</h1>
+    {% for item in items %}
+        <div class="item">
+            <a href="{% url 'items:item-detail' item.pk %}">{{ item.name }}</a>
+        </div>
+    {% endfor %}
+    <h1>This is toms goals</h1>
+    {% for item in toms_items %}
+        <div class="item">
+            <a href="{% url 'items:item-detail' item.pk %}">{{ item.name }}</a>
+        </div>
+    {% endfor %}
+    <h1>These are all the agents</h1>
+    {% for agent in agents %}
+        <div class="item">
+            <a href="#">{{ agent.user }}</a>
+            {% for x in agent.user.name %}
+                <p>Goal: {{ x.name }}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+{% endblock content %}

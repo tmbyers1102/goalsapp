@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
+
+
+
+    <h1>This weeks progress</h1>
+    <h3>possible points: {{ weeks_possible_points }}</h3>
+    <h1>This weeks Goals</h1>
+
+{% for goal in weeks_goals %}
+    <h3>Goal: {{ goal }}</h3>
+{% endfor %}
+
+<table>
+    <tr>
+      <th>Goal</th>
+      <th>Day #1</th>
+      <th>Day #2</th>
+      <th>Day #3</th>
+      <th>Day #4</th>
+      <th>Day #5</th>
+    </tr>
+    
+    {% for goal in weeks_goals %}
+        <tr>
+            <td>{{ goal }}</td>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+        </tr>
+    {% endfor %}
+  </table>
+
+{% endblock content %}

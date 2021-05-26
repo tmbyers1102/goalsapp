@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="{% url 'items:item-list' %}">Go back to Items</a>
+    <hr />
+    <h1>This is the details of {{ item.name }}</h1>
+    <p>description: {{ item.description }}</p>
+    <p>value: {{ item.value }}</p>
+    <p>agent: {{ item.agent }}</p>
+    <p>is_complete: {{ item.is_complete }}</p>
+    <p>item id: {{ item.id }}</p>
+
+{% endblock content %}
