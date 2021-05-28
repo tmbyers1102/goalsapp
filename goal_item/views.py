@@ -1,3 +1,4 @@
+from django.db.models import query
 from goaldays.models import GoalDayOne
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
@@ -11,12 +12,20 @@ from django.views.generic import (
     DeleteView
 )
 from django.urls import reverse
-from .forms import GoalItemModelForm, CurrentGoalWeekModelForm
+from .forms import (
+    GoalItemModelForm,
+    CurrentGoalWeekModelForm,
+    CurrentGoalWeekUpdateForm,
+)
 
 
 def home(request):
-
-    return render(request, 'goal_item/home.html')
+    context = {
+        'weeks': CurrentGoalWeek.objects.all(),
+        'd1_bool_yes': CurrentGoalWeek.objects.filter(day1_is_complete=True).count(),
+        'd2_bool_yes': CurrentGoalWeek.objects.filter(day2_is_complete=True).count(),
+    }
+    return render(request, 'goal_item/home.html', context)
 
 
 class CurrentGoalWeekDetailView(DetailView):
@@ -204,30 +213,16 @@ class CurrentGoalWeekDetailView(DetailView):
         return context
 
 
-class GoalItemCreateView(generic.CreateView):
-    template_name = "goal_item/goalitem_create.html"
-    form_class = GoalItemModelForm
-
-    def get_success_url(self):
-        print(self.goalitem)
-        return reverse("items:item-list")
-
-    def form_valid(self, form):
-        instance = form.save(commit=False)
-        # instance.user = self.request.user
-        instance.save()
-        self.goalitem = instance
-        return super(GoalItemCreateView, self).form_valid(form)
-
-
 class CurrentGoalWeekCreateView(generic.CreateView):
     template_name = "goal_item/currentgoalweek_create.html"
     form_class = CurrentGoalWeekModelForm
 
     def get_success_url(self):
-        print('week created')
+        print('!!VIEWS!!: week created')
         print(self.currentgoalweek)
-        return reverse("weeks:home")
+        return reverse("weeks:week-detail", kwargs={
+            "pk": self.currentgoalweek.id
+        })
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -235,4 +230,14 @@ class CurrentGoalWeekCreateView(generic.CreateView):
         instance.save()
         self.currentgoalweek = instance
         return super(CurrentGoalWeekCreateView, self).form_valid(form)
+
+
+class CurrentGoalWeekUpdateView(generic.UpdateView):
+    template_name = "goal_item/currentgoalweek_update.html"
+    model = CurrentGoalWeek
+    form_class = CurrentGoalWeekUpdateForm
+
+    def get_success_url(self):
+        print('!!VIEWS!!: week updated')
+        return reverse("weeks:home")
 

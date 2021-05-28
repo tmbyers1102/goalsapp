@@ -29,7 +29,7 @@ class Agent(models.Model):
 
 class CurrentGoalWeek(models.Model):
     week_start_date = models.DateField(auto_now_add=False)
-    week_end_date = models.DateField(auto_now_add=False)
+    week_end_date = models.DateField(null=True, blank=True, auto_now_add=False)
     gd1_run = models.BooleanField(default=False)
     gd1_water = models.BooleanField(default=False)
     gd1_smoothie = models.BooleanField(default=False)
@@ -41,19 +41,19 @@ class CurrentGoalWeek(models.Model):
     gd2_smoothie = models.BooleanField(default=False)
     gd2_read = models.BooleanField(default=False)
     day2_is_complete = models.BooleanField(default=False)
-    gd1_extra_point = models.BooleanField(default=False)
+    gd2_extra_point = models.BooleanField(default=False)
     gd3_run = models.BooleanField(default=False)
     gd3_water = models.BooleanField(default=False)
     gd3_smoothie = models.BooleanField(default=False)
     gd3_read = models.BooleanField(default=False)
     day3_is_complete = models.BooleanField(default=False)
-    gd1_extra_point = models.BooleanField(default=False)
+    gd3_extra_point = models.BooleanField(default=False)
     gd4_run = models.BooleanField(default=False)
     gd4_water = models.BooleanField(default=False)
     gd4_smoothie = models.BooleanField(default=False)
     gd4_read = models.BooleanField(default=False)
     day4_is_complete = models.BooleanField(default=False)
-    gd1_extra_point = models.BooleanField(default=False)
+    gd4_extra_point = models.BooleanField(default=False)
     gd5_run = models.BooleanField(default=False)
     gd5_water = models.BooleanField(default=False)
     gd5_smoothie = models.BooleanField(default=False)
@@ -64,7 +64,7 @@ class CurrentGoalWeek(models.Model):
     choose_goals = models.ManyToManyField(GoalItem, blank=True, related_name=('choose_goals'))
 
     def __str__(self):
-        return f'{self.week_start_date} --> {self.week_end_date}'
+        return f'{self.week_start_date}'
 
     
 class CurrentGoalDay(models.Model):

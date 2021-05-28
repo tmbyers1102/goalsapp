@@ -22,7 +22,7 @@
 <a href="{% url 'weeks:home' %}">Back to home</a>
 <hr />
 
-    <h1>Week: {{ week }}</h1>
+    <h1>Week: {{ week.week_start_date|date:"M d" }}</h1><small><a href="{% url 'weeks:week-update' week.id %}">(Update)</a></small>
     <h3>possible points: </h3>
 
 <table>

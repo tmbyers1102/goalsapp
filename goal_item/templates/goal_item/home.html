@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <a href="#">Create a new week</a>
+    <a href="{% url 'week-create' %}">Create a new week</a>
     <hr />
     <h1>Home</h1>
 
-    <h2>Daily Success Percentage: __%</h2>
+    <h2>Daily Success Percentage: {{ d1_bool_yes|add:d2_bool_yes|add:25 }}%</h2>
     <p>AKA: days with is_complete=True vs days with False</p>
     <h2>Weekly Success Percentage: __%</h2>
     <p>AKA: weeks with is_complete=True vs days with False</p>
 
-
+{% for week in weeks %}
+    <h4>Week: <a href="{% url 'weeks:week-detail' week.id %}">{{ week }}</a></h4>
+{% endfor %}
 
 {% endblock content %}

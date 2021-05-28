@@ -31,6 +31,7 @@ class GoalItemAdmin(admin.ModelAdmin):
 class CurrentGoalWeekAdmin(admin.ModelAdmin):
     list_display = [
         'week_start_date',
+        'id',
         'gd1_run',
         'gd1_water',
         'gd1_smoothie',
