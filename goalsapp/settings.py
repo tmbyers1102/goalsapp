@@ -13,7 +13,7 @@ SECRET_KEY = 's8a#988)wktr00$(=f2^!i5&nize@*r(d0o0xdt&-u2pai*m!4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['runwatersmoothieread.herokuapp.com', 'https://runwatersmoothieread.herokuapp.com/']
+ALLOWED_HOSTS = ['runwatersmoothieread.herokuapp.com']
 
 
 # Application definition
