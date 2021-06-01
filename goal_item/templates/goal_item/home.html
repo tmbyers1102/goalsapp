@@ -7,7 +7,7 @@
     <h3 class="mt-4"><a href="{% url 'week-create' %}">Create a new week</a></h3>
     <hr />
     {% for x in active_week %}
-    <h4>Active Week: <a href="{% url 'weeks:week-detail' x.id %}">{{ x|date:"M d" }}</a></h4>
+    <h4>Active Week: <a href="{% url 'weeks:week-detail' x.id %}">{{ x.week_start_date|date:"M d" }}</a></h4>
 
 <table class="table mb-4">
     <tbody>
