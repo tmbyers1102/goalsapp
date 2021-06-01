@@ -4,7 +4,9 @@
 
 <!-- test for git -->
 
-    <h3 class="mt-4"><a href="{% url 'week-create' %}">Create a new week</a></h3>
+    <div class="btn">
+        <a class="btn btn-primary" href="{% url 'week-create' %}">Create a new week</a>
+    </div>
     <hr />
     {% for x in active_week %}
     <h4>Active Week: <a href="{% url 'weeks:week-detail' x.id %}">{{ x.week_start_date|date:"M d" }}</a></h4>
