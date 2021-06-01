@@ -21,9 +21,10 @@ from .forms import (
 
 def home(request):
     context = {
-        'weeks': CurrentGoalWeek.objects.all(),
+        'weeks': CurrentGoalWeek.objects.filter(is_active_week=False),
         'd1_bool_yes': CurrentGoalWeek.objects.filter(day1_is_complete=True).count(),
         'd2_bool_yes': CurrentGoalWeek.objects.filter(day2_is_complete=True).count(),
+        'active_week': CurrentGoalWeek.objects.filter(is_active_week=True)
     }
     return render(request, 'goal_item/home.html', context)
 

@@ -62,6 +62,7 @@ class CurrentGoalWeek(models.Model):
     gd5_extra_point = models.BooleanField(default=False)
     week_extra_2points = models.BooleanField(default=False)
     choose_goals = models.ManyToManyField(GoalItem, blank=True, related_name=('choose_goals'))
+    is_active_week = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.week_start_date}'

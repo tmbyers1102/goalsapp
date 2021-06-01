@@ -13,13 +13,20 @@ class GoalItemModelForm(forms.ModelForm):
             'is_complete'
         )
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
 
 class CurrentGoalWeekModelForm(forms.ModelForm):
     class Meta:
         model = CurrentGoalWeek
+        widgets = {'week_start_date': DateInput()}
         fields = (
             'week_start_date',
         )
+
+
+
 
 
 class CurrentGoalWeekUpdateForm(forms.ModelForm):

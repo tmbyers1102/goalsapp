@@ -1,17 +1,75 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <a href="{% url 'week-create' %}">Create a new week</a>
+    <h3 class="mt-4"><a href="{% url 'week-create' %}">Create a new week</a></h3>
     <hr />
-    <h1>Home</h1>
+    {% for x in active_week %}
+    <h4>Active Week: <a href="{% url 'weeks:week-detail' x.id %}">{{ x }}</a></h4>
 
-    <h2>Daily Success Percentage: {{ d1_bool_yes|add:d2_bool_yes|add:25 }}%</h2>
+<table class="table mb-4">
+    <tbody>
+      <tr>
+        <th>Goal</td>
+        <th>Day #1</td>
+        <th>Day #2</td>
+        <th>Day #3</td>
+        <th>Day #4</td>
+        <th>Day #5</td>
+      </tr>
+      <tr>
+        <td>Run</td>
+        <td>{{ x.gd1_run }}</td>
+        <td>{{ x.gd2_run }}</td>
+        <td>{{ x.gd3_run }}</td>
+        <td>{{ x.gd4_run }}</td>
+        <td>{{ x.gd5_run }}</td>
+      </tr>
+      <tr>
+        <td>Water</td>
+        <td>{{ x.gd1_water }}</td>
+        <td>{{ x.gd2_water }}</td>
+        <td>{{ x.gd3_water }}</td>
+        <td>{{ x.gd4_water }}</td>
+        <td>{{ x.gd5_water }}</td>
+    </tr>
+    <tr>
+        <td>Smoothie</td>
+        <td>{{ x.gd1_smoothie }}</td>
+        <td>{{ x.gd2_smoothie }}</td>
+        <td>{{ x.gd3_smoothie }}</td>
+        <td>{{ x.gd4_smoothie }}</td>
+        <td>{{ x.gd5_smoothie }}</td>
+    </tr>
+    <tr>
+        <td>Read</td>
+        <td>{{ x.gd1_read }}</td>
+        <td>{{ x.gd2_read }}</td>
+        <td>{{ x.gd3_read }}</td>
+        <td>{{ x.gd4_read }}</td>
+        <td>{{ x.gd5_read }}</td>
+    </tr>
+    <tr>
+        <td>Extra Point Achieved?</td>
+        <td>{{ x.gd1_extra_point }}</td>
+        <td>{{ x.gd2_extra_point }}</td>
+        <td>{{ x.gd3_extra_point }}</td>
+        <td>{{ x.gd4_extra_point }}</td>
+        <td>{{ x.gd5_extra_point }}</td>
+    </tr>
+    </tbody>
+ </table>
+{% endfor %}
+
+    <h2>Overall Daily Success Percentage: {{ d1_bool_yes|add:d2_bool_yes|add:25 }}%</h2>
     <p>AKA: days with is_complete=True vs days with False</p>
-    <h2>Weekly Success Percentage: __%</h2>
+    <h2>Overall Weekly Success Percentage: __%</h2>
     <p>AKA: weeks with is_complete=True vs days with False</p>
 
 {% for week in weeks %}
+    Past Weeks Dropdown:
     <h4>Week: <a href="{% url 'weeks:week-detail' week.id %}">{{ week }}</a></h4>
 {% endfor %}
+
+
 
 {% endblock content %}
